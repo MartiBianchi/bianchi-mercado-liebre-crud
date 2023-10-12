@@ -42,6 +42,14 @@ const productServices = {
 
     return formatProductsPrices(products)
   },
+  searchProducts: (query) => {
+    const products = db.products
+      .find()
+      .filter((product) =>
+        product.name.toLowerCase().includes(query.toLowerCase())
+      )
+    return formatProductsPrices(products)
+  },
 }
 
 module.exports = productServices

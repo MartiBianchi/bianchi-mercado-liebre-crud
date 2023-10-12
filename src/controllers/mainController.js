@@ -1,4 +1,4 @@
-const productServices = require('../services/productService')
+const productServices = require('../services/productsServices')
 
 const controller = {
   index: (req, res) => {
@@ -9,6 +9,12 @@ const controller = {
       visitedProducts,
       inSaleProducts,
     })
+  },
+  search: (req, res) => {
+    const keywords = req.query.keywords
+    const foundProducts = productServices.searchProducts(keywords)
+
+    res.render('results', { foundProducts })
   },
 }
 
