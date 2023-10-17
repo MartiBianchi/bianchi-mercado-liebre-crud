@@ -33,12 +33,12 @@
 
                         <% if (product.discount) { %>
                         <p class="product-detail-price small">
-                            <span><%= product.price %></span>
+                            <span>$ <%= product.price %></span>
                             /
                             <b><%= product.discount %>% OFF</b>
                         </p>
                         <p class="product-detail-price">
-                            <%= product.priceWithDiscount%>
+                            $ <%= product.priceWithDiscount%>
                         </p>
                         <% } else { %>
                         <p class="product-detail-price">

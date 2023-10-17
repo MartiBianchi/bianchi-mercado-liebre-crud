@@ -1,14 +1,14 @@
-const productServices = require("../services/productsServices");
+const productsServices = require("../services/productsServices");
 
 const controller = {
   index: (req, res) => {
-    const products = productServices.getAllProducts();
+    const products = productsServices.getAllProducts();
 
     res.render("products", { products });
   },
   detail: (req, res) => {
     const id = req.params.id;
-    const product = productServices.getProduct(id);
+    const product = productsServices.getProduct(id);
 
     res.render("detail", { product });
   },
@@ -25,13 +25,13 @@ const controller = {
       image: req.file ? req.file.filename : "default-image.jpg",
     };
 
-    productServices.createProduct(product);
+    productsServices.createProduct(product);
 
     res.redirect("/products");
   },
   edit: (req, res) => {
     const id = req.params.id;
-    const product = productServices.getProduct(id);
+    const product = productsServices.getProduct(id);
 
     res.render("product-edit-form", { product });
   },
@@ -40,17 +40,17 @@ const controller = {
     const id = req.params.id;
     const image = req.file
       ? req.file.filename
-      : productServices.getProduct(id).image;
+      : productsServices.getProduct(id).image;
 
     product.image = image;
-    productServices.updateProduct(id, product);
+    productsServices.updateProduct(id, product);
 
     res.redirect("/products");
   },
   destroy: (req, res) => {
     const id = req.params.id;
 
-    productServices.deleteProduct(id);
+    productsServices.deleteProduct(id);
 
     res.redirect("/products");
   },
