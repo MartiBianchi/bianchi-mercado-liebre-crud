@@ -1,46 +1,32 @@
-const express = require('express')
-const path = require('path')
-const cookieParser = require('cookie-parser')
-const logger = require('morgan')
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const methodOverride = require("method-override");
 
 // Express
-const app = express()
+const app = express();
 
 // Middlewares
-app.use(logger('dev'))
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "../public")));
+app.use(methodOverride("_method"));
 
 // view engine setup
-app.set('view engine', 'ejs')
-app.set('views', __dirname + '/' + 'views')
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/" + "views");
 
 // Routes systems require and use
-const mainRouter = require('./routes/main')
+const mainRouter = require("./routes/main");
 
-app.use('/', mainRouter)
-
-// ************ DON'T TOUCH FROM HERE ************
-// ************ catch 404 and forward to error handler ************
-app.use((req, res, next) => next(createError(404)))
-
-// ************ error handler ************
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.path = req.path
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
-})
+app.use("/", mainRouter);
 
 // PORT
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`El server está corriendo en http://localhost:${PORT}`)
-})
+  console.log(`El server está corriendo en http://localhost:${PORT}`);
+});
