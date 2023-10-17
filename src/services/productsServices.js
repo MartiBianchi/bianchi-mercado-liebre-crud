@@ -3,11 +3,11 @@ const db = require("../data/db");
 const formatProductPrices = function (product) {
   const priceWithDiscount =
     product.price - product.price * (product.discount / 100);
-  product.priceWithDiscount = `$ ${priceWithDiscount.toLocaleString("es", {
+  product.priceWithDiscount = `${priceWithDiscount.toLocaleString("es", {
     minimumFractionDigits: 2,
   })}`;
 
-  product.price = `$ ${product.price.toLocaleString("es", {
+  product.price = `${product.price.toLocaleString("es", {
     minimumFractionDigits: 2,
   })}`;
 
