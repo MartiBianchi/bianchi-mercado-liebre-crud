@@ -13,6 +13,12 @@ module.exports = {
     const product = products.find((product) => product.id == id);
     return product;
   },
+  findByEmail: (email) => {
+    const productsFilePath = path.join(__dirname, "./usersDataBase.json");
+    const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
+    const product = products.find((product) => product.email == email);
+    return product;
+  },
   create: (product) => {
     console.log(`Creating product ${product.name}`);
     return product;

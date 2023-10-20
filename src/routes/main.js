@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+const { Router, urlencoded } = require("express");
+const router = Router();
 
 const mainController = require("../controllers/mainController");
 const productsRouter = require("./products");
@@ -8,7 +8,8 @@ const loginValidations = require("../validations/login-validations");
 const loginMiddleware = require("../middlewares/login-middleware");
 
 // Main Routes
-router.get("/login", mainController.login);
+router.get("/", mainController.index);
+
 router.post(
   "/login/auth",
   loginValidations,
@@ -16,7 +17,7 @@ router.post(
   mainController.auth,
 );
 
-router.get("/", mainController.index);
+router.get("/login", mainController.login);
 router.get("/search", mainController.search);
 
 // Other Routes
