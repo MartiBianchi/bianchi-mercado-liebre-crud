@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Creación de usuario'}) %>
+
+<body>
+    <!-- Header -->
+    <%- include('partials/headerNavbar') %>
+    <!-- /Header -->
+
+    <div class="container products-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="products-title">Creación de usuarios</h2>
+            </div>
+        </div>
+        <div class="col-12">
+            <form action="/products" method="post" enctype='multipart/form-data'>
+                <div class="row product-detail">
+                    <div class="col-12 col-md-6">
+                        <label for="firstName" class="form-label">Nombre:</label>
+                        <input type="text" id="firstName" name="name" placeholder="Martiniano" class="form-input">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="lastName" class="form-label">Apellido:</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Bianchi" class="form-input">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="email" class="form-label">Correo:</label>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" class="form-input">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="password" class="form-label">Contraseña:</label>
+                        <input type="password" id="password" name="password" placeholder="*********" class="form-input">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="contactNumber" class="form-label">Celular:</label>
+                        <input type="tel" id="contactNumber" name="contactNumber" placeholder='11 4795-7777' class="form-input">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="birthDate" class="form-label">Fecha de nacimiento:</label>
+                        <input type="date" id="birthDate" name="birthDate" placeholder='11 4795-7777' class="form-input">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="adress" class="form-label">Dirección</label>
+                        <input type="text" id="adress" name="adress" placeholder='calle falsa 123' class="form-input">
+                    </div>
+                    <div class="col-12">
+                        <label for="profilePicture" class="form-label">Imagen:</label>
+                        <input type="file" name="profilePicture" id="profilePicture" class='form-input' accept='image/png, image/jpg'>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="buy-now-button">Guardar producto</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- /todos los productos -->
+
+    <!-- footer -->
+    <%- include('partials/footer') %>
+    <!-- /footer -->
+</body>
+
+</html>
