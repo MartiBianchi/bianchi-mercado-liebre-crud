@@ -3,6 +3,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const methodOverride = require('method-override')
+const session = require('express-session')
 
 const app = express()
 
@@ -13,6 +14,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, '../public')))
 app.use(methodOverride('_method'))
+app.use(
+  session({
+    secret: 'mercado-liebre-bianchi',
+    resave: false,
+    saveUninitialized: false,
+  })
+)
 
 // view engine setup
 app.set('view engine', 'ejs')

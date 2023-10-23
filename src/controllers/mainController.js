@@ -6,17 +6,25 @@ const controller = {
     res.render('login')
   },
   auth: (req, res) => {
+    const userToLogin = usersServices.getUserByField('email', req.body.email)
+
+    req.session.userLogged = userToLogin
+
+    console.log('Desde auth', req.session)
+
     res.redirect('/')
   },
   index: (req, res) => {
+    const { firstName, email } = req.session.userLogged
+
     const visitedProducts = productServices.getVisitedProducts()
     const inSaleProducts = productServices.getInSaleProducts()
 
     res.render('index', {
       visitedProducts,
       inSaleProducts,
-      // name: data.name,
-      // email: data.email,/
+      firstName,
+      email,
     })
   },
   search: (req, res) => {

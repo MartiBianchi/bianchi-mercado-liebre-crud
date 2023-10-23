@@ -1,10 +1,10 @@
-const db = require("../data/db");
+const db = require('../data/db')
 
 const usersServices = {
-  getUserByEmail: (email) => {
-    const user = db.users.findByEmail(email);
-    return user;
+  getUserByField: (field, text) => {
+    const user = db.users.findByField(field, text)
+    return user
   },
-};
+}
 
-module.exports = usersServices;
+module.exports = usersServices
