@@ -1,3 +1,5 @@
+const bcryptjs = require('bcryptjs')
+
 const productServices = require('../services/productsServices')
 const usersServices = require('../services/usersServices')
 
@@ -8,23 +10,43 @@ const controller = {
   auth: (req, res) => {
     const userToLogin = usersServices.getUserByField('email', req.body.email)
 
-    req.session.userLogged = userToLogin
+    if (userToLogin) {
+      const validPassword = bcryptjs.compareSync(
+        req.body.password,
+        userToLogin.password
+      )
 
-    console.log('Desde auth', req.session)
+      if (validPassword) {
+        delete userToLogin.password
+        req.session.userLogged = userToLogin
 
-    res.redirect('/')
+        return res.redirect('/')
+      }
+
+      return res.render('login', {
+        errors: {
+          password: {
+            msg: 'La contraseña ingresada no es correcta',
+          },
+        },
+      })
+    }
+
+    return res.render('login', {
+      errors: {
+        email: {
+          msg: 'El correo electrónico ingresado es inválido',
+        },
+      },
+    })
   },
   index: (req, res) => {
-    const { firstName, email } = req.session.userLogged
-
     const visitedProducts = productServices.getVisitedProducts()
     const inSaleProducts = productServices.getInSaleProducts()
 
     res.render('index', {
       visitedProducts,
       inSaleProducts,
-      firstName,
-      email,
     })
   },
   search: (req, res) => {
