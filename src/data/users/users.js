@@ -1,51 +1,56 @@
-const fs = require('fs')
-const path = require('path')
+const fs = require("fs");
+const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
 module.exports = {
   getUsers: function () {
-    const usersPath = path.join(__dirname, './usersDataBase.json')
-    const users = JSON.parse(fs.readFileSync(usersPath, 'utf-8'))
-    return users
+    const usersPath = path.join(__dirname, "./usersDataBase.json");
+    const users = JSON.parse(fs.readFileSync(usersPath, "utf-8"));
+
+    return users;
   },
   saveUsers: function (users) {
-    const usersDBPath = path.join(__dirname, './usersDataBase.json')
-    fs.writeFileSync(usersDBPath, JSON.stringify(users, null, 2))
+    const usersDBPath = path.join(__dirname, "./usersDataBase.json");
+    fs.writeFileSync(usersDBPath, JSON.stringify(users, null, 2));
   },
   findAll: function () {
-    return this.getUsers()
+    return this.getUsers();
   },
   findById: function (id) {
-    const user = this.findAll().find((user) => user.id == id)
-    return user
+    const user = this.findAll().find((user) => user.id == id);
+
+    return user;
   },
   findByField: function (field, text) {
-    const users = this.findAll()
-    const user = users.find((user) => user[field] == text)
+    const users = this.findAll();
+    const user = users.find((user) => user[field] == text);
 
-    return user
+    return user;
   },
   create: function (user) {
-    console.log(`Creating user ${user.email}`)
-    const users = this.getUsers()
+    const users = this.getUsers();
     const newUser = {
       id: uuidv4(),
+      accessType: user.email.includes("@ebeer.com") ? "admin" : "user",
       ...user,
-    }
-    users.push(newUser)
-    this.saveUsers(users)
+    };
+
+    users.push(newUser);
+    this.saveUsers(users);
   },
   update: function (id, user) {
-    console.log(`Updating user ${user.email}`)
-    const users = this.getUsers()
-    const userToEdit = users.find((user) => user.id == id)
-    Object.assign(userToEdit, user)
-    this.saveUsers(users)
-    return user
+    const users = this.getUsers();
+    const userToEdit = users.find((user) => user.id == id);
+
+    Object.assign(userToEdit, user);
+    this.saveUsers(users);
+
+    return user;
   },
   delete: function (id) {
-    console.log(`Deleting user ${id}`)
-    const users = this.getUsers()
-    const nonDeletedUsers = users.filter((user) => user.id != id)
-    this.saveUsers(nonDeletedUsers)
+    const users = this.getUsers();
+    const nonDeletedUsers = users.filter((user) => user.id != id);
+
+    this.saveUsers(nonDeletedUsers);
   },
-}
+};

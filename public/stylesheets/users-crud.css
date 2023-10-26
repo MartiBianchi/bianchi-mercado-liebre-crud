@@ -1,0 +1,150 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+h2 {
+  margin: 50px 0;
+  font-size: 2.4em;
+}
+
+.head-table-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pl-filters {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.pl-container-selects {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pl-container-selects select {
+  width: 100px;
+}
+
+.searchbar input,
+.pl-container-selects select {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding-left: 5px;
+  height: 30px;
+}
+
+.searchbar button {
+  display: flexbox;
+  background-color: var(--gray);
+  height: 30px;
+  margin-left: 5px;
+}
+
+.searchbar i {
+  padding-bottom: 3px;
+  color: white;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  overflow-x: auto;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  width: 100%;
+  background-color: white;
+}
+
+tbody {
+  padding: 10px;
+  position: relative;
+  font-size: 1.5em;
+}
+
+th {
+  font-size: 1.5em;
+  padding: 20px 20px 10px 20px;
+}
+
+td {
+  padding-bottom: 5px;
+  border: none;
+}
+
+button {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: rgba(28, 145, 28, 0.705);
+  color: white;
+}
+
+.btn-view {
+  background-color: rgba(35, 49, 128, 0.7);
+}
+
+.btn-edit {
+  background-color: rgba(82, 82, 82, 0.7);
+}
+
+.btn-delete {
+  background-color: rgba(206, 9, 9, 0.7);
+}
+
+td i {
+  font-size: 1em;
+  color: white;
+}
+
+.pagination-container {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+  font-size: 1.2em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 10px 10px;
+  padding-right: 20px;
+}
+
+.rows-per-page-container select {
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.pagination-btns-container button:nth-child(1) {
+  margin-right: 25px;
+}
+.pagination-btns-container button {
+  border: none;
+  background-color: unset;
+}
+.pagination-btns-container button i {
+  color: var(--gray);
+}

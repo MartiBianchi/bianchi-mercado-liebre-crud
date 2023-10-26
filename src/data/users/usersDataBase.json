@@ -82,5 +82,14 @@
     "birthDate": "2023-10-24",
     "address": "asdasd@gmail.com",
     "profilePicture": "profilePicture-1698190888310.jpg"
+  },
+  {
+    "id": "8aecedc9-cb98-46e7-8e5f-45cefd433e18",
+    "accessType": "admin",
+    "firstName": "Martiniano",
+    "lastName": "Bianchi",
+    "email": "bianchimartiniano@gmail.com",
+    "password": "123456",
+    "profilePicture": "profilePicture-1698345314600.jpg"
   }
 ]
