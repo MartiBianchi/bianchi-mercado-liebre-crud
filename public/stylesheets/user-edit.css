@@ -66,8 +66,6 @@ main {
 .btn-edit {
   display: block;
   color: black;
-  margin-top: 10px;
-  margin-bottom: 15px;
   font-size: 13px;
 }
 
@@ -100,7 +98,7 @@ main {
 @media (min-width: 1023px) {
   main {
     display: flex;
-    flex-direction: row;
+
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
