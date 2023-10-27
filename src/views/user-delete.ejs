@@ -1,0 +1,5 @@
+<h2>¿Está seguro que desea eliminar este usuario?</h2>
+<form action="/users/<%= user.id %>/delete?_method=delete" method="post">
+  <button type="submit">Si</button>
+  <a href="/users/crud">No</a>
+</form>

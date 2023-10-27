@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+  <!-- Include Head -->
+  <%- include('partials/head', {title: user.firstName}) %>
+
+  <body>
+    <%- include('./partials/headerNavbar.ejs') %>
+
+    <main>
+      <section class="info-profile-container">
+        <article class="profile-picture">
+          <img src="/images/users/<%= user.image %>" alt="fotoDePerfil" />
+        </article>
+
+        <article class="info-profile-container-desc">
+          <h3>Tipo de perfil:</h3>
+          <br />
+          <p><%= user.firstName %> <%= user.lastName %></p>
+        </article>
+      </section>
+
+      <section class="bottomProfile">
+        <form
+          action="/users/<%= user.id %>/edit/?_method=put"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <article class="input-container">
+            <label for="firstName">Nombre</label>
+            <input
+              name="firstName"
+              type="text"
+              class="inputs"
+              value="<%= user.firstName %>"
+            />
+          </article>
+          <article class="input-container">
+            <label for="lastName">Apellido</label>
+            <input
+              name="lastName"
+              type="text"
+              class="inputs"
+              value="<%= user.lastName %>"
+            />
+          </article>
+          <article class="input-container">
+            <label for="email">Email</label>
+            <input
+              name="email"
+              type="email"
+              class="inputs"
+              value="<%= user.email %>"
+            />
+          </article>
+          <article class="input-container">
+            <label for="password">Contraseña</label>
+            <input
+              name="password"
+              type="password"
+              class="inputs"
+              placeholder="******"
+            />
+          </article>
+          <article class="input-container">
+            <label for="image">Imagen</label>
+            <input
+              name="image"
+              id="image"
+              accept=".jpg"
+              type="file"
+              class="inputs"
+            />
+          </article>
+
+          <button class="btn-yellow btn-edit">Actualizar Mis Datos</button>
+        </form>
+      </section>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+  </body>
+</html>
