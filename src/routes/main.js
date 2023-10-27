@@ -3,6 +3,7 @@ const router = Router();
 
 const mainController = require("../controllers/mainController");
 const productsRouter = require("./products");
+const usersRouter = require("./users");
 
 const loginValidations = require("../validations/login-validations");
 const loginMiddleware = require("../middlewares/login-middleware");
@@ -22,5 +23,6 @@ router.get("/search", mainController.search);
 
 // Other Routes
 router.use("/products", productsRouter);
+router.use("/users", usersRouter);
 
 module.exports = router;
